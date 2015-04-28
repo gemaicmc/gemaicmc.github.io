@@ -59,6 +59,10 @@ for contest in contests:
 		if 'party' in row:
 			for player in row['party']['members']:
 				handle = player['handle']
+				# SAD AS FUCK
+				if handle == 'LaercioJr':
+					continue
+
 				players[handle] = 1
 				if handle not in problemas_player:
 					problemas_player[handle] = row['points']
@@ -102,7 +106,5 @@ for player in points_player:
 
 print 'Handle #Contests #Problemas #Pontos'
 for row in sorted(table_rows, reverse=True):
-	handle = row[1]
-	if handle == 'LaercioJr':
-		continue
+	handle = row[1]	
 	print  handle, contests_player[handle], int(problemas_player[handle]), row[0] 
