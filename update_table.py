@@ -70,7 +70,7 @@ for contest in contests:
 					problemas_player[handle] += row['points']
 				contest_res[-1][player['handle']] = pos
 		if 'teamName' in row['party']:
-			pos = pos + 2
+			pos = pos + 3
 		else:
 			pos = pos + 1
 # print contest_res
