@@ -97,11 +97,12 @@ for contest in contest_res:
 			else:
 				contest[handle] = -100
 			penalty[handle] += 1
-			contests_player[handle] += 1
+
 
 	for handle in contest:
 		points_player[handle] += points[contest[handle]]
-
+		contests_player[handle] += 1
+		
 for player in points_player:
 	table_rows.append( [points_player[player], player] )
 
