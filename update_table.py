@@ -89,12 +89,12 @@ for contest in contest_res:
 			penalty[handle] += 1
 
 	for handle in contest:
-		points_player[handle] += contest[handle]
+		points_player[handle] += points[contest[handle]]
 
 for player in points_player:
 	table_rows.append( [points_player[player], player] )
 
 print 'Handle #Contests #Problemas #Pontos'
-for row in table_rows:
+for row in sorted(table_rows, reverse=True):
 	handle = row[1]
 	print  handle, contests_player[handle], int(problemas_player[handle]), row[0] 
