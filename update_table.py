@@ -17,6 +17,10 @@ for line in f:
 	val = int(line)
 	points.append(val)
 
+# k = 1
+# for p in points:
+# 	print '<tr><td> ', k, '</td> <td>', p, '</tr>'
+# 	k = k + 1
 for contest in contests:
 	contest_res.append({})
 	timestamp = int(time.time())
@@ -61,8 +65,10 @@ for contest in contests:
 				else:
 					problemas_player[handle] += row['points']
 				contest_res[-1][player['handle']] = pos
-		pos = pos + 1
-
+		if 'teamName' in row['party']:
+			pos = pos + 2
+		else:
+			pos = pos + 1
 # print contest_res
 
 penalty = {}
@@ -97,4 +103,6 @@ for player in points_player:
 print 'Handle #Contests #Problemas #Pontos'
 for row in sorted(table_rows, reverse=True):
 	handle = row[1]
+	if handle == 'LaercioJr':
+		continue
 	print  handle, contests_player[handle], int(problemas_player[handle]), row[0] 
