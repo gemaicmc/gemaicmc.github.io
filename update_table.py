@@ -97,6 +97,7 @@ for contest in contest_res:
 			else:
 				contest[handle] = -100
 			penalty[handle] += 1
+			contests_player[handle] += 1
 
 	for handle in contest:
 		points_player[handle] += points[contest[handle]]
