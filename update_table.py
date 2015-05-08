@@ -9,7 +9,7 @@ teams = {}
 contest_res = []
 team_contests = []
 #  Dict -> player -> pos
-contests = { '203053' }
+contests = { '203053', '203159' }
 
 f = open ('scripts/config/score_individual', 'r')
 points = []
@@ -89,7 +89,7 @@ for contest in contest_res:
 	for handle in players:
 		if handle not in contest: 
 			if penalty[handle] == 0:
-				contest[handle] = 0
+				contest[handle] = -1
 			elif penalty[handle] == 1:
 				contest[handle] = -30
 			elif penalty[handle] == 2:
@@ -100,9 +100,11 @@ for contest in contest_res:
 
 
 	for handle in contest:
-		points_player[handle] += points[contest[handle]]
-		contests_player[handle] += 1
-		
+		if contest[handle] >= 0:
+			points_player[handle] += points[contest[handle]]
+			contests_player[handle] += 1
+		else:	
+			points_player[handle] += contest[handle]
 for player in points_player:
 	table_rows.append( [points_player[player], player] )
 
