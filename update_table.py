@@ -9,7 +9,7 @@ teams = {}
 contest_res = []
 team_contests = []
 #  Dict -> player -> pos
-contests = { '203053', '203159' }
+contests = [ '203294', '203053', '203159'  ]
 
 f = open ('scripts/config/score_individual', 'r')
 points = []
@@ -33,6 +33,11 @@ for contest in contests:
 
 	apiSecret = '620e9e83dd2827ec825f401f446b219f5792e2c9'
 
+	# Correcao por causa da API key diferente
+	if contest == '203294':
+		params['apiKey'] = 'c7ecd8c892937ac8e49403cc28653b69d2d0c6f3'
+		apiSecret = '076955c20cdcc4857e0202ed70b50288c43b06ef'
+		
 	request = 'contest.standings?'
 	full_req = ''
 
@@ -60,7 +65,7 @@ for contest in contests:
 			for player in row['party']['members']:
 				handle = player['handle']
 				# SAD AS FUCK
-				if handle == 'LaercioJr':
+				if handle == 'LaercioJr' or handle == 'otvio' or handle == 'raulz' or handle == 'RicardoSilva':
 					continue
 
 				players[handle] = 1
@@ -69,6 +74,7 @@ for contest in contests:
 				else:
 					problemas_player[handle] += row['points']
 				contest_res[-1][player['handle']] = pos
+
 		if 'teamName' in row['party']:
 			pos = pos + 3
 		else:
