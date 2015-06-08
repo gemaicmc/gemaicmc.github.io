@@ -45,3 +45,18 @@ nav ul li a:hover,
 nav ul li a:focus {
 	color: #000; 
 }
+
+code, pre {
+	font-family: Consolas, Monaco, 'Andale Mono', 'Lucida Console', monospace;
+	hyphens: none;
+}
+
+pre {
+	max-height: 30em;
+	overflow: auto;
+}
+
+pre > code.highlight {
+	outline: .4em solid red;
+	outline-offset: .4em;
+}
