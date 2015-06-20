@@ -8,6 +8,13 @@
   <title>Grupo de Estudos da Maratona do ICMC</title>
   <meta name="description" content="">
   <meta name="author" content="">
+  
+   <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/prism.css">
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -18,16 +25,12 @@
   <!--<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">-->
 
   <!-- SCRIPTS  -->
+  <script src="scripts/vis.min.js"></script>
   <script src="scripts/jquery-min.js"></script>
   <script src="scripts/magic.js"></script>
   <script src="scripts/prism.js" data-default-language="markup"></script>
     
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/prism.css">
+ 
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -65,8 +68,10 @@
       <div class="eight columns offset-by-four content">
        <div id="tabela" class="doc-section">
             <h4> Classificação </h4>
+            <div class="centered">
             <button class='hide-show' name='gema-table'>Mostrar</button>
-            <div id="gema-table" hidden> </div>
+            </div>
+            <div id="gema-table" hidden align=center> </div>
           </div>
 
        <div id="crit" class="doc-section">
@@ -77,51 +82,50 @@
           
           <div class='centered'>
             <button class='hide-show' name='gema-points'>Mostrar</button>
-            <table id='gema-points' hidden>
-            <tr><td>  1 </td> <td> 200 </tr>
-            <tr><td>  2 </td> <td> 180 </tr>
-            <tr><td>  3 </td> <td> 160 </tr>
-            <tr><td>  4 </td> <td> 150 </tr>
-            <tr><td>  5 </td> <td> 140 </tr>
-            <tr><td>  6 </td> <td> 135 </tr>
-            <tr><td>  7 </td> <td> 130 </tr>
-            <tr><td>  8 </td> <td> 125 </tr>
-            <tr><td>  9 </td> <td> 120 </tr>
-            <tr><td>  10 </td> <td> 115 </tr>
-            <tr><td>  11 </td> <td> 110 </tr>
-            <tr><td>  12 </td> <td> 105 </tr>
-            <tr><td>  13 </td> <td> 100 </tr>
-            <tr><td>  14 </td> <td> 95 </tr>
-            <tr><td>  15 </td> <td> 90 </tr>
-            <tr><td>  16 </td> <td> 85 </tr>
-            <tr><td>  17 </td> <td> 80 </tr>
-            <tr><td>  18 </td> <td> 75 </tr>
-            <tr><td>  19 </td> <td> 70 </tr>
-            <tr><td>  20 </td> <td> 65 </tr>
-            <tr><td>  21 </td> <td> 62 </tr>
-            <tr><td>  22 </td> <td> 59 </tr>
-            <tr><td>  23 </td> <td> 56 </tr>
-            <tr><td>  24 </td> <td> 53 </tr>
-            <tr><td>  25 </td> <td> 50 </tr>
-            <tr><td>  26 </td> <td> 47 </tr>
-            <tr><td>  27 </td> <td> 44 </tr>
-            <tr><td>  28 </td> <td> 41 </tr>
-            <tr><td>  29 </td> <td> 38 </tr>
-            <tr><td>  30 </td> <td> 35 </tr>
-            <tr><td>  31 </td> <td> 32 </tr>
-            <tr><td>  32 </td> <td> 29 </tr>
-            <tr><td>  33 </td> <td> 26 </tr>
-            <tr><td>  34 </td> <td> 23 </tr>
-            <tr><td>  35 </td> <td> 20 </tr>
-            <tr><td>  36 </td> <td> 17 </tr>
-            <tr><td>  37 </td> <td> 14 </tr>
-            <tr><td>  38 </td> <td> 11 </tr>
-            <tr><td>  39 </td> <td> 8 </tr>
-            <tr><td>  40 </td> <td> 5 </tr>
-            <tr><td>  41 </td> <td> 2 </tr>
-            <tr><td>  >41 </td> <td> 1 </tr>
-          </table>
-         
+            <table id='gema-points' hidden align=center>
+              <tr><td>  1 </td> <td> 200 </tr>
+              <tr><td>  2 </td> <td> 180 </tr>
+              <tr><td>  3 </td> <td> 160 </tr>
+              <tr><td>  4 </td> <td> 150 </tr>
+              <tr><td>  5 </td> <td> 140 </tr>
+              <tr><td>  6 </td> <td> 135 </tr>
+              <tr><td>  7 </td> <td> 130 </tr>
+              <tr><td>  8 </td> <td> 125 </tr>
+              <tr><td>  9 </td> <td> 120 </tr>
+              <tr><td>  10 </td> <td> 115 </tr>
+              <tr><td>  11 </td> <td> 110 </tr>
+              <tr><td>  12 </td> <td> 105 </tr>
+              <tr><td>  13 </td> <td> 100 </tr>
+              <tr><td>  14 </td> <td> 95 </tr>
+              <tr><td>  15 </td> <td> 90 </tr>
+              <tr><td>  16 </td> <td> 85 </tr>
+              <tr><td>  17 </td> <td> 80 </tr>
+              <tr><td>  18 </td> <td> 75 </tr>
+              <tr><td>  19 </td> <td> 70 </tr>
+              <tr><td>  20 </td> <td> 65 </tr>
+              <tr><td>  21 </td> <td> 62 </tr>
+              <tr><td>  22 </td> <td> 59 </tr>
+              <tr><td>  23 </td> <td> 56 </tr>
+              <tr><td>  24 </td> <td> 53 </tr>
+              <tr><td>  25 </td> <td> 50 </tr>
+              <tr><td>  26 </td> <td> 47 </tr>
+              <tr><td>  27 </td> <td> 44 </tr>
+              <tr><td>  28 </td> <td> 41 </tr>
+              <tr><td>  29 </td> <td> 38 </tr>
+              <tr><td>  30 </td> <td> 35 </tr>
+              <tr><td>  31 </td> <td> 32 </tr>
+              <tr><td>  32 </td> <td> 29 </tr>
+              <tr><td>  33 </td> <td> 26 </tr>
+              <tr><td>  34 </td> <td> 23 </tr>
+              <tr><td>  35 </td> <td> 20 </tr>
+              <tr><td>  36 </td> <td> 17 </tr>
+              <tr><td>  37 </td> <td> 14 </tr>
+              <tr><td>  38 </td> <td> 11 </tr>
+              <tr><td>  39 </td> <td> 8 </tr>
+              <tr><td>  40 </td> <td> 5 </tr>
+              <tr><td>  41 </td> <td> 2 </tr>
+              <tr><td>  >41 </td> <td> 1 </tr>
+            </table>
           </div>
           
           
@@ -131,7 +135,7 @@
 
           Caso um participante deixe de participar de mais de 1 contest, ele perderá pontos (por cada contest), de acordo com a tabela:
 
-          <table>
+          <table align=center>
             <tr> <td> 2 </td> <td> -30 </td> </tr>
             <tr> <td> 3 </td> <td> -70 </td> </tr>
             <tr> <td> >3 </td> <td> -100 </td> </tr>
@@ -146,15 +150,106 @@
         <hr></hr>
         <div id="editoriais" class="doc-section">
           <h4> Tutoriais </h4>
-
-          <!--<div class="code-example">
-          <pre data-src="index.html"></pre>
-          </div>
           
-          <div id="exemplo-1">
-            <button class='run-example'>Try me</button>
-          </div>-->
-      
+          <ul>
+            <li>
+              Grafos
+            </li>
+          </ul>
+          
+          <h5> Grafos </h5>
+          
+          <p>
+          Como percebi que muita gente têm tido dificuldade, resolvi escrever um tutorial sobre grafos.
+          Pretendo cobrir com esse tutorial, possivelmente aos poucos:
+          <ul>
+            <li> Representação </li>
+            <li> Busca em Profundidade </li>
+            <li> Busca em Largura </li>
+            <li> Árvores </li>
+            <li> Alguns problemas clássicos: coloração, menores caminhos, profundidade, componentes conexas.</li>
+          </ul>
+          </p>
+          
+          <h6> 1. Representação </h6>
+          
+          Um grafo é um conjunto composto por vértices (ou nós) e arestas. Existem várias situações
+          que podem ser representadas utilizando grafos: amizade (nós são as pessoas e as arestas são as relações),
+          labirintos (nós são as interseções e as arestas são os corredores entre elas), entre muitas outras. 
+          
+          Um exemplo de modelagem em grafos pode ser vista na figura abaixo: 
+          
+          <img src="img/social_network.png" class="centered"></img>      
+          
+          Esse grafo é um subgrafo da rede social do Facebook, onde os vértices são usuários da rede e as arestas 
+          são relações de amizade. Quem ficou interessado no exemplo, pode encontrar mais detalhes no artigo 
+          <a href="http://arxiv.org/pdf/1310.6753v1.pdf"> Romantic Partnerships and the Dispersion of Social Ties: A Network Analysis of Relationship Status on Facebook </a>.
+
+          </p>
+          
+          <p>
+          Vamos voltar à idéia básica de grafos. Considere o grafo abaixo. 
+          Esse grafo possui 3 nós e 2 arestas: uma aresta do vértice 2 para o 1 
+          e outra do vértice 2 para o 3. Suponha que essas arestas são não-direcionais, ou seja, representam alguma relação mútua. Como 
+          representamos esse grafo?
+          </p>
+
+          <div id="exemplo1" class="graphDiv">
+          </div>
+          <div class='caption'>
+            Grafo Simples
+          </div>
+
+          <p>
+          Uma opção é utilizar uma <strong>matriz de adjacência</strong>. 
+          Nesse caso, utilizamos uma matriz N x N para representar um grafo com 
+          N vértices. Em cada  uma das linhas, a entrada i,j é 1 se há uma 
+          aresta do vértice i para o vértice j, e 0 caso contrário. Caso as 
+          arestas possuam algum valor, ao invés de 1 utiliza-se esse valor.
+
+          No grafo do exemplo, a matriz de adjacência seria
+
+          <table align=center>
+            <tr> <td> </td> <td> 1 </td> <td> 2 </td> <td> 3 </td> </tr>
+            <tr> <td> 1 </td> <td> 0 </td> <td> 1 </td> <td> 0 </td> </tr>
+            <tr> <td> 2 </td> <td> 1 </td> <td> 0 </td> <td> 1 </td> </tr>
+            <tr> <td> 3 </td> <td> 0 </td> <td> 1 </td> <td> 0 </td> </tr>
+          </table>
+          </p>
+          <div class='caption'>
+            Matriz de adjacência
+          </div>
+        
+          Em <strong>C++</strong>, representaríamos esse grafo com o seguinte
+          código:
+
+          <pre data-src="Examples/grafo-1.cpp"></pre>
+          <div class='caption'>
+            Matriz de adjacência em C++
+          </div>
+          </p>
+          
+          <p>
+          Alguns detalhes desse código: 
+
+          <ul>
+            <li>
+              <a href="http://www.cplusplus.com/reference/cstring/memset/">
+              Memset </a>: função da biblioteca padrão para inicializar um bloco
+              de memória. Geralmente utilizado para inicializar vetores com 0 ou
+              -1. Cuidado ao utilizar outros valores: <strong>  The value is 
+              passed as an int, but the function fills the block of memory using 
+              the unsigned char conversion of this value.</strong> 
+            </li>
+            <li> <strong>Espaço</strong>: O espaço utilizado é proporcional ao 
+              número vértices ao quadrado: <img src="http://latex.codecogs.com/svg.latex?O(N^2)" border="0"/>. Esse espaço é utilizado 
+              independentemente do número de arestas no grafo. No grafo do 
+              exemplo, utilizamos o espaço de 4*4 = 16 inteiros  (são 3 
+              vértices, mas não utilizamos o índice 0 nesse caso), mesmo que só
+              existam 4 (2 arestas bi-direcionais).
+
+          </ul>
+          </p>
         </div>
       </div>
     </div>

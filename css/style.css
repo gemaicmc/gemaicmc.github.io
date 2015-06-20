@@ -67,9 +67,47 @@ pre > code.highlight {
 }
 
 div.centered {
-	/*text-align: center;*/
+	text-align: center;
 	/*margin: auto;*/
 	margin-bottom: 20px;
 	margin-top: 20px;
 	/*padding-left:40%;*/
+}
+
+div.graphDiv {
+	width: 80%;
+	height: 300px;
+	border: solid 1px lightblue;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+div.caption {
+	margin-top: 10px;
+	margin-bottom: 30px;
+	text-align: center;
+	font-size: small;
+	font-style: oblique;
+}
+
+h5,h4 {
+	text-align: center;
+}
+
+h6 {
+	text-align: center;
+	font-weight: bold;
+}
+
+
+img.centered {
+	margin: 20px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a {
+	color: lightslategray;
 }
