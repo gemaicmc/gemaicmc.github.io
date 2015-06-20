@@ -56,6 +56,7 @@ $(document).ready(function(){
 	
 	Gema.graphs = {}
 	Gema.graphs.exemplo1 = {}
+	// Exemplo 1
 	Gema.graphs.exemplo1.nodes = [
 		{ id: 1, label: '1', color: '#99CCFF'},
 		{ id: 2, label : '2', color: '#99CCFF' },
@@ -65,6 +66,17 @@ $(document).ready(function(){
 		{ from: 1, to: 2 },
 		{ from: 2, to: 3 }
 	]
+	// Exemplo 2
+	Gema.graphs.exemplo2 = {}
+	Gema.graphs.exemplo2.nodes = [
+		{ id: 1, label: '1', color: '#99CCFF'},
+		{ id: 2, label : '2', color: '#99CCFF' },
+		{ id: 3, label: '3', color: '#99CCFF' }
+	]
+	Gema.graphs.exemplo2.edges = [
+		{ from: 1, to: 2, arrows : 'to' },
+		{ from: 2, to: 3, arrows :  'to' }
+	]
 	
 	Gema.drawGraph = function(graph, containerId) {
 		console.log(graph.nodes)
@@ -72,7 +84,7 @@ $(document).ready(function(){
 		var nodes = new vis.DataSet(graph.nodes) 
 		var edges = new vis.DataSet(graph.edges)
 		var container = $('#' + containerId)
-		container = document.getElementById('exemplo1')
+		container = document.getElementById(containerId)
 		var data = {
 			nodes: nodes,
 			edges: edges
@@ -85,19 +97,5 @@ $(document).ready(function(){
 	}
 	 
 	Gema.drawGraph(Gema.graphs.exemplo1, 'exemplo1')
-	  // create an array with nodes
-	  	// var nodes = new vis.DataSet([
-	    // {id: 1, label: 'Node 1' , color : 'red'},
-	    // {id: 2, label: 'Node 2', shape : 'circle'},
-	    // {id: 3, label: 'Node 3'},
-	    // {id: 4, label: 'Node 4'},
-	    // {id: 5, label: 'Node 5'}
-	  // ]);	  
-	  // // create an array with edges
-	  // var edges = new vis.DataSet([
-	    // {from: 1, to: 3},
-	    // {from: 1, to: 2},
-	    // {from: 2, to: 4},
-	    // {from: 2, to: 5}
-	  // ]);
+	Gema.drawGraph(Gema.graphs.exemplo2, 'exemplo2')
 });

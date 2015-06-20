@@ -29,9 +29,12 @@
   <script src="scripts/jquery-min.js"></script>
   <script src="scripts/magic.js"></script>
   <script src="scripts/prism.js" data-default-language="markup"></script>
-    
+  <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+  <script type="text/javascript">
+  LatexIT.add('p',true);
+  LatexIT.add('li',true);
+  </script>
  
-
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
@@ -128,8 +131,6 @@
             </table>
           </div>
           
-          
-
           <h5> Faltas </h5>
           Cada participante terá sua pior pontuação descartada automaticamente.
 
@@ -160,95 +161,182 @@
           <h5> Grafos </h5>
           
           <p>
-          Como percebi que muita gente têm tido dificuldade, resolvi escrever um tutorial sobre grafos.
-          Pretendo cobrir com esse tutorial, possivelmente aos poucos:
-          <ul>
-            <li> Representação </li>
-            <li> Busca em Profundidade </li>
-            <li> Busca em Largura </li>
-            <li> Árvores </li>
-            <li> Alguns problemas clássicos: coloração, menores caminhos, profundidade, componentes conexas.</li>
-          </ul>
-          </p>
-          
-          <h6> 1. Representação </h6>
-          
-          Um grafo é um conjunto composto por vértices (ou nós) e arestas. Existem várias situações
-          que podem ser representadas utilizando grafos: amizade (nós são as pessoas e as arestas são as relações),
-          labirintos (nós são as interseções e as arestas são os corredores entre elas), entre muitas outras. 
-          
-          Um exemplo de modelagem em grafos pode ser vista na figura abaixo: 
-          
-          <img src="img/social_network.png" class="centered"></img>      
-          
-          Esse grafo é um subgrafo da rede social do Facebook, onde os vértices são usuários da rede e as arestas 
-          são relações de amizade. Quem ficou interessado no exemplo, pode encontrar mais detalhes no artigo 
-          <a href="http://arxiv.org/pdf/1310.6753v1.pdf"> Romantic Partnerships and the Dispersion of Social Ties: A Network Analysis of Relationship Status on Facebook </a>.
+            Como percebi que muita gente têm tido dificuldade, não têm tido como
+            ir nas aulas/etc, resolvi escrever um tutorial sobre grafos.
+            Pretendo cobrir com esse tutorial, possivelmente aos poucos:
 
+            <ul>
+              <li> Representação & Propriedades </li>
+              <li> Busca em Profundidade </li>
+              <li> Busca em Largura </li>
+              <li> Árvores </li>
+              <li> Alguns problemas clássicos: coloração, menores caminhos, profundidade, componentes conexas.</li>
+            </ul>
+            </p>
+            
+            <h6> 1. Representação </h6>
+            
+            Um grafo é um conjunto composto por vértices (ou nós) e arestas. Existem várias situações
+            que podem ser representadas utilizando grafos: amizade (nós são as pessoas e as arestas são as relações),
+            labirintos (nós são as interseções e as arestas são os corredores entre elas), entre muitas outras. 
+            
+            Um exemplo de modelagem em grafos pode ser vista na figura abaixo: 
+            
+            <img src="img/social_network.png" class="centered"></img>      
+            
+            Esse grafo é um subgrafo da rede social do Facebook, onde os vértices são usuários da rede e as arestas 
+            são relações de amizade. Quem ficou interessado no exemplo, pode encontrar mais detalhes no artigo 
+            <a href="http://arxiv.org/pdf/1310.6753v1.pdf"> Romantic Partnerships and the Dispersion of Social Ties: A Network Analysis of Relationship Status on Facebook </a>.
           </p>
           
           <p>
-          Vamos voltar à idéia básica de grafos. Considere o grafo abaixo. 
-          Esse grafo possui 3 nós e 2 arestas: uma aresta do vértice 2 para o 1 
-          e outra do vértice 2 para o 3. Suponha que essas arestas são não-direcionais, ou seja, representam alguma relação mútua. Como 
-          representamos esse grafo?
+            Vamos voltar à idéia básica de grafos. Considere o grafo abaixo. 
+            Esse grafo possui 3 nós e 2 arestas: uma aresta do vértice 2 para o 1 
+            e outra do vértice 2 para o 3. Suponha que essas arestas são não-direcionais, ou seja, representam alguma relação mútua. Como 
+            representamos esse grafo?
           </p>
 
           <div id="exemplo1" class="graphDiv">
           </div>
           <div class='caption'>
-            Grafo Simples
+            Exemplo 1: Grafo Simples
           </div>
 
           <p>
-          Uma opção é utilizar uma <strong>matriz de adjacência</strong>. 
-          Nesse caso, utilizamos uma matriz N x N para representar um grafo com 
-          N vértices. Em cada  uma das linhas, a entrada i,j é 1 se há uma 
-          aresta do vértice i para o vértice j, e 0 caso contrário. Caso as 
-          arestas possuam algum valor, ao invés de 1 utiliza-se esse valor.
+            Uma opção é utilizar uma <strong>matriz de adjacência</strong>. 
+            Nesse caso, utilizamos uma matriz N x N para representar um grafo com 
+            N vértices. Em cada  uma das linhas, a entrada i,j é 1 se há uma 
+            aresta do vértice i para o vértice j, e 0 caso contrário. Caso as 
+            arestas possuam algum valor, ao invés de 1 utiliza-se esse valor.
 
-          No grafo do exemplo, a matriz de adjacência seria
+            No grafo do Exemplo 1, a matriz de adjacência seria
 
-          <table align=center>
-            <tr> <td> </td> <td> 1 </td> <td> 2 </td> <td> 3 </td> </tr>
-            <tr> <td> 1 </td> <td> 0 </td> <td> 1 </td> <td> 0 </td> </tr>
-            <tr> <td> 2 </td> <td> 1 </td> <td> 0 </td> <td> 1 </td> </tr>
-            <tr> <td> 3 </td> <td> 0 </td> <td> 1 </td> <td> 0 </td> </tr>
-          </table>
-          </p>
-          <div class='caption'>
-            Matriz de adjacência
-          </div>
-        
-          Em <strong>C++</strong>, representaríamos esse grafo com o seguinte
-          código:
+            <table align=center>
+              <tr> <td> </td> <td> 1 </td> <td> 2 </td> <td> 3 </td> </tr>
+              <tr> <td> 1 </td> <td> 0 </td> <td> 1 </td> <td> 0 </td> </tr>
+              <tr> <td> 2 </td> <td> 1 </td> <td> 0 </td> <td> 1 </td> </tr>
+              <tr> <td> 3 </td> <td> 0 </td> <td> 1 </td> <td> 0 </td> </tr>
+            </table>
+            </p>
+            <div class='caption'>
+              Matriz de adjacência
+            </div>
+          
+            Em <strong>C++</strong>, representaríamos esse grafo com o seguinte
+            código:
 
-          <pre data-src="Examples/grafo-1.cpp"></pre>
-          <div class='caption'>
-            Matriz de adjacência em C++
-          </div>
+            <pre data-src="Examples/grafo-1.cpp"></pre>
+            <div class='caption'>
+              Matriz de adjacência em C++
+            </div>
           </p>
           
           <p>
-          Alguns detalhes desse código: 
+            Alguns detalhes desse código: 
+            <ul>
+              <li>
+                <a href="http://www.cplusplus.com/reference/cstring/memset/">
+                Memset </a>: função da biblioteca padrão para inicializar um bloco
+                de memória. Geralmente utilizado para inicializar vetores com 0 ou
+                -1. Cuidado ao utilizar outros valores: <strong>  The value is 
+                passed as an int, but the function fills the block of memory using 
+                the unsigned char conversion of this value.</strong> 
+              </li>
+              <li> <strong>Espaço</strong>: O espaço utilizado é proporcional ao 
+                número vértices ao quadrado: $O(N^2)$. Esse espaço é utilizado 
+                independentemente do número de arestas no grafo. No grafo do 
+                exemplo, utilizamos o espaço de 4*4 = 16 inteiros  (são 3 
+                vértices, mas não utilizamos o índice 0 nesse caso), mesmo que só
+                existam 4 (2 arestas bi-direcionais).
+              </li>
+              <li> Se quisermos enumerar todos os vizinhos do vértice 1, é 
+                necessário percorrer a linha 1 inteira da matriz, mesmo que ele 
+                possua apenas 1 vizinho. Em outras palavras, a complexidade de 
+                enumerar os vizinhos de um vértice é $O(N)$.
+            </ul>
+          
+            Esse tipo de representação é melhor aproveitada quando o grafo é 
+            <strong>denso</strong>, ou seja, quando o número de arestas é próximo
+            do maior valor possível. A maioria dos algoritmos de grafos precisa
+            enumerar os vizinhos de cada vértice, e, portanto, fica geralmente mais 
+            lento utilizando essa representação.
+          </p>
 
-          <ul>
-            <li>
-              <a href="http://www.cplusplus.com/reference/cstring/memset/">
-              Memset </a>: função da biblioteca padrão para inicializar um bloco
-              de memória. Geralmente utilizado para inicializar vetores com 0 ou
-              -1. Cuidado ao utilizar outros valores: <strong>  The value is 
-              passed as an int, but the function fills the block of memory using 
-              the unsigned char conversion of this value.</strong> 
-            </li>
-            <li> <strong>Espaço</strong>: O espaço utilizado é proporcional ao 
-              número vértices ao quadrado: <img src="http://latex.codecogs.com/svg.latex?O(N^2)" border="0"/>. Esse espaço é utilizado 
-              independentemente do número de arestas no grafo. No grafo do 
-              exemplo, utilizamos o espaço de 4*4 = 16 inteiros  (são 3 
-              vértices, mas não utilizamos o índice 0 nesse caso), mesmo que só
-              existam 4 (2 arestas bi-direcionais).
+          <p> 
+              A representação mais utilizada é a representação em <strong>
+              lista de adjacência</strong>. Nessa representação, para cada vértice,
+              guardamos uma lista dos outros vértices ao qual esse vértice está 
+              conectado. Para o grafo do Exemplo 1, a lista de adjacência seria:
 
-          </ul>
+              <table align=center>
+                <tr> <td>1 </td> <td> [ 2 ] </td> </tr>
+                <tr> <td>2 </td> <td> [ 1, 3 ] </td> </tr>
+                <tr> <td>3 </td> <td> [ 2 ] </td>
+              </table>
+              
+              Em <strong>C++</strong>, geralmente utilizamos a estrutura 
+              <strong>vector</strong> da <a href="http://www.cplusplus.com/reference/stl/">STL</a> para representar listas de adjacência:
+
+              <pre data-src="Examples/grafo-2.cpp"></pre>
+              <div class='caption'>
+                Lista de adjacência em C++
+              </div>
+            </p>
+
+            <p>
+              Repare que essa representação/código utiliza menos espaço que a 
+              representação com matrizes, para esse exemplo. Inicialmente, temos 
+              4 <strong>vector</strong> vazios. Nesse ponto, há um uso de 
+              memória proporcional a $O(N)$,  contra $O(N^2)$ do outro método. 
+              Após inserir todas as arestas, podemos dizer que o uso de memória 
+              é proporcional a $O(N + E)$, se E for o número de arestas (nesse 
+              caso, 4).
+          </p>
+
+          <p> 
+              O grau de um vértice em um grafo é o número de vértices ao qual
+              esse vértice está conectado, se as arestas forem bi-direcionais. 
+              Caso as arestas tenham direção, esse valor é separado em grau de 
+              entrada e grau de saída. O grau de entrada conta o número de 
+              arestas incidentes no vértice e o grau de saída conta o número de arestas
+              que saem do vértice.
+
+              Considere, o caso em que o grafo exemplo é direcionado:
+              <div id="exemplo2" class='graphDiv'></div>
+              <div class='caption'>Grafo do exemplo 1, direcionado</div>
+          </p>
+
+          <p>
+              Vamos fazer um código que: 
+              <ul>
+                <li> 
+                  Lê o número de vértices e arestas de um grafo direcionado. 
+                  Esse grafo tem no máximo 100 vértices.
+                </li>
+                <li> 
+                  Lê as conexões do grafo. Serão no máximo 4950 conexões. (100 escolhe 2).
+                </li>
+                <li>
+                  Imprime o grau de entrada e o grau de saída de cada vértice.
+                  Além disso, devemos imprimir os vizinhos de cada vértice.
+                </li>
+              </ul>
+
+              <pre data-src='Examples/grafo-3.cpp'></pre>
+          </p>
+
+          <p>
+              Esse exemplo trata do formato de entrada mais usual para grafos:
+              o número de vértices e arestas, seguido de uma lista de arestas. 
+              A entrada para o Exemplo 1 seria (com o grafo direcionado):
+  
+              <pre data-src="Examples/grafo-1.html"></pre>
+          </p>
+
+          <p>
+              Com isso, já podemos ler e representar grafos em um programa em
+              <strong>C++</strong>. As seções seguintes tratam de algoritmos 
+              para resolver problemas em grafos.
           </p>
         </div>
       </div>
@@ -259,3 +347,4 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>
+
