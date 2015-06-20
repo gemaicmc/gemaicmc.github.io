@@ -60,3 +60,16 @@ pre > code.highlight {
 	outline: .4em solid red;
 	outline-offset: .4em;
 }
+
+.code-example {
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+
+div.centered {
+	/*text-align: center;*/
+	/*margin: auto;*/
+	margin-bottom: 20px;
+	margin-top: 20px;
+	/*padding-left:40%;*/
+}

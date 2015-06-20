@@ -15,7 +15,7 @@
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <!--<link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">-->
 
   <!-- SCRIPTS  -->
   <script src="scripts/jquery-min.js"></script>
@@ -65,14 +65,19 @@
       <div class="eight columns offset-by-four content">
        <div id="tabela" class="doc-section">
             <h4> Classificação </h4>
-            <div id="gema-table"> </div>
+            <button class='hide-show' name='gema-table'>Mostrar</button>
+            <div id="gema-table" hidden> </div>
           </div>
 
        <div id="crit" class="doc-section">
-                 <h4> Critérios </h4>
+          <h4> Critérios </h4>
+          
           Essa página tem como objetivo manter atualizada a tabela de pontos dos contests do <strong>GEMA</strong>. <br>
           Os pontos são distribuídos para cada participante por contest, de acordo com a seguinte tabela: <br>
-          <table>
+          
+          <div class='centered'>
+            <button class='hide-show' name='gema-points'>Mostrar</button>
+            <table id='gema-points' hidden>
             <tr><td>  1 </td> <td> 200 </tr>
             <tr><td>  2 </td> <td> 180 </tr>
             <tr><td>  3 </td> <td> 160 </tr>
@@ -116,6 +121,10 @@
             <tr><td>  41 </td> <td> 2 </tr>
             <tr><td>  >41 </td> <td> 1 </tr>
           </table>
+         
+          </div>
+          
+          
 
           <h5> Faltas </h5>
           Cada participante terá sua pior pontuação descartada automaticamente.
@@ -137,7 +146,15 @@
         <hr></hr>
         <div id="editoriais" class="doc-section">
           <h4> Tutoriais </h4>
+
+          <!--<div class="code-example">
           <pre data-src="index.html"></pre>
+          </div>
+          
+          <div id="exemplo-1">
+            <button class='run-example'>Try me</button>
+          </div>-->
+      
         </div>
       </div>
     </div>

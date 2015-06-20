@@ -9,7 +9,7 @@ teams = {}
 contest_res = []
 team_contests = []
 #  Dict -> player -> pos
-contests = [ '203294', '203053', '203159'  ]
+contests = [ '203294', '203053', '203159', '203522'  ]
 
 f = open ('scripts/config/score_individual', 'r')
 points = []
@@ -88,6 +88,8 @@ table_rows = []
 
 for player in players:
 	points_player[player] = 0
+	if player == 'LoppA': 
+		points_player[player] = 5
 	contests_player[player] = 0
 	penalty[player] = 0
 
