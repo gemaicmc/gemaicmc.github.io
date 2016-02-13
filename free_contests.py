@@ -5,8 +5,6 @@ import json
 import sys
 
 def make_request (request, params):
-
-	apiSecret = '620e9e83dd2827ec825f401f446b219f5792e2c9'
 	full_req = ''
 	for key in params:
 		request += key + '=' + params[key] + '&'
