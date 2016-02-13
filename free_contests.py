@@ -36,7 +36,8 @@ for contest in res['result']:
     try:
 	contestId = contest['id']
 	params = {
-		'contestId' : str(contestId)
+		'contestId' : str(contestId),
+                'showUnofficial' : 'true',
 	}
 	cont = make_request ('contest.standings?', params)
 
