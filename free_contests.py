@@ -2,52 +2,56 @@ import urllib2
 import time
 import hashlib
 import json
+import sys
 
 def make_request (request, params):
 
 	apiSecret = '620e9e83dd2827ec825f401f446b219f5792e2c9'
 	full_req = ''
-
 	for key in params:
-		request += key + '=' + params[key] + '&' 
-
-	request = request[:-1]
-	full_req = request
-	request += '#' + apiSecret
-
-	res = hashlib.sha512('123456/' + request).hexdigest()
-	full_req += '&apiSig=123456' + res 
-	print full_req
-	res = urllib2.urlopen("http://codeforces.com/api/"  + full_req).read()
+		request += key + '=' + params[key] + '&'
+        if request[-1] == '&':
+                request = request[:-1]
+	full_req = "http://codeforces.com/api/"  + request
+	res = urllib2.urlopen(full_req).read()
 	jres = json.loads(res)
-	
 	return jres
 
 
 
-timestamp = int(time.time())
-
-params = { 
-	'time' :  str(timestamp),
-	'apiKey' : '32f81e4b7319652f10b46a8b3588ef022c717043'
-}
+params = {}
 
 res = make_request ('contest.list?', params)
 
-users = []
+users = {}
+
 f = open ('users', 'r')
-for user in f:
-	users.append (f)
+for line in f:
+    users[line[:-1]] = 1
+
+print 'Finding contests for:'
+for user in users:
+    print user
+print '==============='
 
 for contest in res['result']:
-	
+    try:
 	contestId = contest['id']
-	timestamp = int(time.time())
 	params = {
-		'time' :  str(timestamp),
-		'apiKey' : '32f81e4b7319652f10b46a8b3588ef022c717043',
 		'contestId' : str(contestId)
 	}
 	cont = make_request ('contest.standings?', params)
-	for row in cont['rows']:
-		print row
+
+        good = True
+        for u in cont['result']['rows']:
+            if 'party' in u:
+                for member in u['party']['members']:
+                    if member['handle'] == 'rodz':
+                        good = False
+                    if member['handle'] in users:
+                        good = False
+        if good == True:
+            print cont['result']['contest']['name']
+
+    except:
+        continue
