@@ -44,8 +44,6 @@ for contest in res['result']:
         for u in cont['result']['rows']:
             if 'party' in u:
                 for member in u['party']['members']:
-                    if member['handle'] == 'rodz':
-                        good = False
                     if member['handle'] in users:
                         good = False
         if good == True:
